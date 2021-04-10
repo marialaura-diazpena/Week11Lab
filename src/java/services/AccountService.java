@@ -46,12 +46,15 @@ public class AccountService {
             String uuid = UUID.randomUUID().toString();
             String link = url + "?uuid=" + uuid;
             
+            user.setResetPasswordUuid(uuid);
+            userDB.update(user);
+            
             HashMap<String, String> tags = new HashMap<>();
-                tags.put("firstname", user.getFirstName());
-                tags.put("lastname", user.getLastName());
-                tags.put("link", link);
+            tags.put("firstname", user.getFirstName());
+            tags.put("lastname", user.getLastName());
+            tags.put("link", link);
                 
-                GmailService.sendMail(to, subject, template, tags);
+            GmailService.sendMail(to, subject, template, tags);
             return true;
          } catch (Exception ex) {
              return false;

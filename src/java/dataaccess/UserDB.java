@@ -21,7 +21,7 @@ public class UserDB {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         
         try {
-            User user = em.find(User.class, uuid);
+            User user = em.createNamedQuery("User.findByResetPasswordUuid", User.class).setParameter("resetPasswordUuid", uuid).getSingleResult();
             return user;
         } finally {
             em.close();

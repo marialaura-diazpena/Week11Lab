@@ -1,5 +1,6 @@
 package servlets;
 
+import dataaccess.UserDB;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -36,7 +37,7 @@ public class LoginServlet extends HttpServlet {
         Cookie cookie = new Cookie("email", email);
         cookie.setMaxAge(60 * 60 * 24 * 365 * 3);
         response.addCookie(cookie);
-        
+               
         AccountService as = new AccountService();
         String path = getServletContext().getRealPath("/WEB-INF");
         User user = as.login(email, password, path);

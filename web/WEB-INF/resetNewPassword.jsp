@@ -1,3 +1,4 @@
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -6,10 +7,10 @@
         <title>My Notes</title>
     </head>
     <body>
-        <h1>Reset Password</h1>
-        Please enter your email to reset your password.
+        <h1>Enter a new password</h1>
         <form method="POST" action="reset">
-            Email Address: <input type="text" name="email" > <br>
+            <input type="password" name="newPassword"><br>
+            <input type="hidden" name="uuid" value="${uuid}">
             <input type="submit" value="Submit">
         </form>
     </body>
